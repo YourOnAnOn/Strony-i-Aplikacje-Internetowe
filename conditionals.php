@@ -41,7 +41,7 @@
     <br>
     <hr>
     <br>
-    <h1 style="border: 4px solid red; text-align: center;">
+    <h1 style="border: 4px solid blue; text-align: center;">
     <?php 
     $miesiac = rand(1, 15);
     echo $miesiac;
