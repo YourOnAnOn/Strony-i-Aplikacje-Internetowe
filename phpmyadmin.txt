@@ -1,0 +1,5 @@
+SELECT concat('"', Tytul, '" ',"została napisana przez ",Imie, " ", Nazwisko)FROM `ksiazki`;
+SELECT concat('"',Tytul,'" - ',Nazwisko," ", Imie,", ","Wydawnictwo ",Wydawnictwo," (",Rok_wyd," ", Miejsce_wyd,") ",Objetosc_ks," str."," Cena: ",Cena," (Dział: ",Nazwa,")")FROM ksiazki, dzialy;
+SELECT upper(Imie), Upper(Nazwisko) FROM pracownicy;
+SELECT CONCAT((LEFT(Imie, 1)),". ",Nazwisko," ",Tytul) AS KSIAZKI FROM ksiazki;
+SELECT CONCAT(Imie," ", Nazwisko) AS OSOBA, FORMAT(Data_zatrudnienia, 'dd:mm:yyyy') FROM pracownicy AS zatrudniony;
