@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,25 +24,25 @@
         <div class="option"><a href="5dtabela5.php">Tabela stanowiska</a></div>
         <div class="option"><a href="5dtabela6.php">Tabela wypożyczenia</a></div>
     </div>
-    <h1>Tabela czytelnicy</h1>
+    <h1>Nowe dane tabeli działy</h1>
+    <table class="tabeleleleczka">
     <?php 
     $conn = mysqli_connect("localhost", "user", "password", "uwu1");
     if(!$conn){
         die("Błąd: ".mysqli_connect_error());
     }
-    #tabelka +sql start
-    echo "<table class='tabeleczka'>";
-    $sql = "SELECT * FROM czytelnicy";
-    $result = mysqli_query($conn, $sql);
-    echo "<p class='nocnocnoc'>Zawiera ".mysqli_num_rows($result)." wierszy</p>";
-    echo "<tr>";
-    echo "<th>Nr_czytelnika</th><th>Nazwisko</th><th>Imie</th><th>Data_ur</th><th>Ulica</th><th>Kod</th><th>Miasto</th><th>Data_zapisania</th><th>Data_skreslenia</th><th>Nr_legitymacji</th><th>Funkcja</th><th>Plec</th>";
-    echo "</tr>";
-    while ($row = mysqli_fetch_assoc($result)){
-        echo "<tr><td>".$row['Nr_czytelnika']."</td><td>".$row['Nazwisko']."</td><td>".$row['Imie']."</td><td>".$row['Data_ur']."</td><td>".$row['Ulica']."</td><td>".$row['Kod']."</td>"."<td>".$row['Miasto']."</td>"."<td>".$row['Data_zapisania']."</td>"."<td>".$row['Data_skreslenia']."</td>"."<td>".$row['Nr_legitymacji']."</td>"."<td>".$row['Funkcja']."</td>"."<td>".$row['Plec']."</td>"."</tr>";
+    $sql = "INSERT INTO dzialy (Id_dzial, Nazwa) VALUES (NULL, 'nazwa')";
+    echo "<form action='dzialy_dodaj.php' method='POST'>";
+    echo "<tr><td><input type='text' name='nazwa' placeholder='Nazwa dzialu'></td></tr>";
+    echo "<tr><td><input type='submit' value='Dodaj'></td></tr>";
+    echo "</form>";
+    if(isset($_POST['nazwa'])){
+        $sql = "INSERT INTO dzialy (Id_dzial, Nazwa) VALUES (NULL, '".$_POST['nazwa']."')";
+        mysqli_query($conn, $sql);
+        header("Location: dzialy_dodaj.php");
     }
-    echo "</table>";
-    #tabelka end
+
     ?>
+    </table>
 </body>
 </html>
