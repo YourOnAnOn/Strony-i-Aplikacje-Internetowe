@@ -13,7 +13,7 @@
 </head>
 <body>
     <?php 
-    $conn = mysqli_connect("localhost", "user", "password", "raus1");
+    $conn = mysqli_connect("localhost", "user", "password", "uwu1");
     if(!$conn){
         die("Błąd: ".mysqli_connect_error());
     }
