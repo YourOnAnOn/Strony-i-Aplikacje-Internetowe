@@ -24,26 +24,35 @@
         <div class="option"><a href="5dtabela5.php">Tabela stanowiska</a></div>
         <div class="option"><a href="5dtabela6.php">Tabela wypożyczenia</a></div>
     </div>
-    <h1>Tabela działy</h1>
+    <h1>Nowe dane tabeli działy</h1>
+    <table class="tabeleleleczka">
     <?php 
     $conn = mysqli_connect("localhost", "user", "password", "uwu1");
     if(!$conn){
         die("Błąd: ".mysqli_connect_error());
     }
-    #tabelka +sql start
-    echo "<table class='tabeleczka'>";
     $sql = "SELECT * FROM dzialy";
     $result = mysqli_query($conn, $sql);
-    echo "<p class='nocnocnoc'>Zawiera ".mysqli_num_rows($result)." wierszy</p>";
-
-    echo "<tr>";
-    echo "<th>Id_dzial</th><th>Nazwa</th><th><a class='add' href='dzialy_dodaj.php'>&#10010;</a></th>";
-    echo "</tr>";
+    echo "<form action='edit.php' method='POST'>";
+    echo "<select name='dzialy' class='selekt'>";
     while ($row = mysqli_fetch_assoc($result)){
-        echo "<tr><td>".$row['Id_dzial']."</td><td>".$row['Nazwa']."</td><td><a href='edit.php'>Edytuj</a></td></tr>";
+        echo "<option value='".$row['Id_dzial']."'>".$row['Nazwa']."</option>";
     }
-    echo "</table>";
-    #tabelka end
+    echo "</select>";
+    echo "<input type='text' name='nazwa' placeholder='Nazwa dzialu'>";
+    echo "<input type='submit' value='Zmień'>";
+    echo "</form>";
+    if (isset($_POST['nazwa'])){
+        
+        $nazwa = $_POST['nazwa'];
+        $sql = "UPDATE dzialy SET Nazwa='$nazwa' WHERE Id_dzial='$_GET["id_dzial"]'";
+        mysqli_query($conn, $sql);
+        mysqli_close($conn);
+        header("Location: 5dtabela2.php");
+    }
+
+
     ?>
+    </table>
 </body>
 </html>
