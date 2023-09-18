@@ -40,7 +40,7 @@
     echo "<th>Id_dzial</th><th>Nazwa</th><th><a class='add' href='dzialy_dodaj.php'>&#10010;</a></th>";
     echo "</tr>";
     while ($row = mysqli_fetch_assoc($result)){
-        echo "<tr><td>".$row['Id_dzial']."</td><td>".$row['Nazwa']."</td><td><a href='edit.php'>Edytuj</a></td></tr>";
+        echo "<tr><td>".$row['Id_dzial']."</td><td>".$row['Nazwa']."</td><td><a href='edit.php'>Edytuj</a></td><td><a href='delete.php'>USUN</a></td></tr>";
     }
     echo "</table>";
     #tabelka end
