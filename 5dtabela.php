@@ -26,7 +26,7 @@
     </div>
     <h1>Tabela czytelnicy</h1>
     <?php 
-    $conn = mysqli_connect("localhost", "user", "password", "uwu1");
+    $conn = mysqli_connect("localhost", "user", "password", "raus1");
     if(!$conn){
         die("Błąd: ".mysqli_connect_error());
     }
